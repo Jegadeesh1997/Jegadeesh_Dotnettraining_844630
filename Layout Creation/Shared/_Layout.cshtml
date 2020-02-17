@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #black {
+            height: 100%;
+            width: 15%;
+            color: white;
+            background-color: black;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        #white {
+            height: 25%;
+            width: 80%;
+            background-color: white;
+            position: absolute;
+            top: 130px;
+            left: 20px;
+            border-radius: 5px;
+        }
+
+        #red {
+            width: 85%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 15%;
+            background-color: lightcyan;
+        }
+        #in {
+            width: 85%;
+            height: 85%;
+            position: absolute;
+            top:15%;
+            left: 15%;
+            background-color: lightcyan;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 35px;
+        }
+
+        th {
+            font-size: 20px;
+            padding: 10px 10px;
+            text-align: left;
+        }
+
+        #table1 td {
+            padding: 10px 10px;
+            text-align: left;
+        }
+
+        #table1 {
+            margin: 10px;
+            width: 90%;
+            border-color: white;
+        }
+
+        span {
+            margin-left: 20px;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div id='black'>
+        <img src="/cloud-3.png" height="100px" width="200px">
+        <div id="white">
+
+            <table cellspacing=10>
+                <tr>
+                    <td> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; &ensp;</td>
+                    <td cellspacing=10>
+                        <a href="">  Create new requitment</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>  </td>
+                    <td>
+                        <a href="">   Create new trainer</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>  </td>
+                    <td borderspace=5>
+                        <a href=""> Create new resource</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div id="red">
+
+        <h1>TRM</h1>
+      
+        </div>
+    <div id="in">
+
+       @RenderBody()
+      
+    </div>
+
+
+</body>
+</html>

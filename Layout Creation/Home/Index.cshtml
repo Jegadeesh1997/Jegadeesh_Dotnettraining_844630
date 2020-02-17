@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    form {
+        width: 98%;
+        height:100%;
+        border-radius: 3px;
+        background: lightgrey;
+        padding: 0px 10px
+    }
+
+    input,select {
+        width: 100%;
+        margin-bottom:35px;
+       
+    }
+</style>
+<form action="dashboard.html" method="post" >
+    
+
+    <b>Requirement Name</b></br>
+    <input type="text" required></br>
+
+    <b>skill set</b></br>
+    <select style="width: 100%;border-radius:3px ;padding: 3px " required>
+        <option>c#</option>
+        <option>JAVA</option>
+        <option>PHP</option>
+        <option>Python</option>
+    </select></br>
+
+    <b>start Date</b></br>
+    <input type="date" required></br>
+
+    <b>End Date</b></br>
+    <input type="date" required></br>
+
+    <input type="submit" style=" border : none;background:white" value="Create Request">
+
+    <a href="~/Views/Home/next.cshtml" style="color:teal; text-decoration:none ">Go to dashboard</a>
+
+</form>
+
+
