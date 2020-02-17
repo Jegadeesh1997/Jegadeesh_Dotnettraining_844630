@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="jegaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="maildetails">
+          <Key>
+            <PropertyRef Name="mailid" />
+          </Key>
+          <Property Name="mailid" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="mailform" Type="varchar" MaxLength="30" />
+          <Property Name="sub" Type="varchar" MaxLength="30" />
+          <Property Name="recieveddate" Type="date" />
+          <Property Name="mes" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="30" />
+          <Property Name="pass" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__maildetai__useri__286302EC">
+          <End Role="userinfo" Type="Self.userinfo" Multiplicity="1" />
+          <End Role="maildetails" Type="Self.maildetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userinfo">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="maildetails">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="jegaModelStoreContainer">
+          <EntitySet Name="maildetails" EntityType="Self.maildetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__maildetai__useri__286302EC" Association="Self.FK__maildetai__useri__286302EC">
+            <End Role="userinfo" EntitySet="userinfo" />
+            <End Role="maildetails" EntitySet="maildetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="jegaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="maildetail">
+          <Key>
+            <PropertyRef Name="mailid" />
+          </Key>
+          <Property Name="mailid" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="mailform" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sub" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="recieveddate" Type="DateTime" Precision="0" />
+          <Property Name="mes" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="userinfo" Relationship="Self.FK__maildetai__useri__286302EC" FromRole="maildetails" ToRole="userinfo" />
+        </EntityType>
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="maildetails" Relationship="Self.FK__maildetai__useri__286302EC" FromRole="userinfo" ToRole="maildetails" />
+        </EntityType>
+        <Association Name="FK__maildetai__useri__286302EC">
+          <End Role="userinfo" Type="Self.userinfo" Multiplicity="1" />
+          <End Role="maildetails" Type="Self.maildetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userinfo">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="maildetails">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="jegaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="maildetails" EntityType="Self.maildetail" />
+          <EntitySet Name="userinfoes" EntityType="Self.userinfo" />
+          <AssociationSet Name="FK__maildetai__useri__286302EC" Association="Self.FK__maildetai__useri__286302EC">
+            <End Role="userinfo" EntitySet="userinfoes" />
+            <End Role="maildetails" EntitySet="maildetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="jegaModelStoreContainer" CdmEntityContainer="jegaEntities">
+          <EntitySetMapping Name="maildetails">
+            <EntityTypeMapping TypeName="jegaModel.maildetail">
+              <MappingFragment StoreEntitySet="maildetails">
+                <ScalarProperty Name="mailid" ColumnName="mailid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="mailform" ColumnName="mailform" />
+                <ScalarProperty Name="sub" ColumnName="sub" />
+                <ScalarProperty Name="recieveddate" ColumnName="recieveddate" />
+                <ScalarProperty Name="mes" ColumnName="mes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userinfoes">
+            <EntityTypeMapping TypeName="jegaModel.userinfo">
+              <MappingFragment StoreEntitySet="userinfo">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

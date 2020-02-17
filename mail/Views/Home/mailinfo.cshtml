@@ -1,0 +1,39 @@
+﻿@model List<mail.Models.csmodel>
+@{
+    ViewBag.Title = "mailinfo";
+    Layout = "";
+}
+
+<html>
+<head>
+    <style type="text/css">
+        tr, td {
+            padding: 10px 5px 10px 5px
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <table style="width:100%">
+        @foreach (var i in Model)
+        {
+
+            <tr>
+                <td>
+                    @i.mailid
+                </td>
+                <td>
+                    <a href="/Home/info?id=@i.mailid">@i.sub</a>
+                </td>
+                <td>
+                    @i.Date
+                </td>
+            </tr>
+
+          
+        }
+    </table>
+
+</body>
+</html>
+
